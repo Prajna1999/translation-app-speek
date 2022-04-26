@@ -1,6 +1,9 @@
 import { countries } from "../src/countries.js";
 
 const selectTag=document.querySelectorAll("select");
+const fromText=document.querySelector(".from-text");
+const toText=document.querySelector(".to-text");
+const translateBtn=document.querySelector("button");
 
 selectTag.forEach((tag,id)=>{
     
@@ -21,3 +24,17 @@ selectTag.forEach((tag,id)=>{
     
 });
 
+translateBtn.addEventListener("click", ()=>{
+    const url="https://api.mymemory.translated.net/get?q=Hello World!&langpair=en|it";
+
+    fetch(url)
+        .then(response=>{
+            if(!response.ok){
+                throw new Error("Error: something went wrong!")
+            }
+            return response.json();
+            
+        }).then(result=>{
+            console.log(result);
+        })
+})
