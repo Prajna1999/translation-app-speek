@@ -25,8 +25,9 @@ selectTag.forEach((tag,id)=>{
 });
 
 translateBtn.addEventListener("click", ()=>{
-    const url="https://api.mymemory.translated.net/get?q=Hello World!&langpair=en|it";
-
+    
+    const fromTextValue=fromText.value.trim();
+    const url=`https://api.mymemory.translated.net/get?q=${fromTextValue}&langpair=en|it`;
     fetch(url)
         .then(response=>{
             if(!response.ok){
@@ -35,6 +36,8 @@ translateBtn.addEventListener("click", ()=>{
             return response.json();
             
         }).then(result=>{
-            console.log(result);
+            // console.log(result);
+            toText.innerText=result.responseData.translatedText;
         })
+        
 })
