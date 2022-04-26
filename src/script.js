@@ -71,6 +71,24 @@ exchangeBtn.addEventListener("click", ()=>{
 
 iconBtn.forEach(icon=>{
     icon.addEventListener("click", (e)=>{
-       console.log(e.target.classList)
+       if(e.target.classList.contains("fa-copy")){
+           if(e.target.id==="from"){
+               navigator.clipboard.writeText(fromText.value);
+           }else{
+               navigator.clipboard.writeText(toText.value);
+           }
+       }else{
+           let utterance;
+           if(e.target.id==="from"){
+               utterance=new SpeechSynthesisUtterance(fromText.value);
+               utterance.lang=selectTag[0].value;
+               fromText.blur();
+           }else{
+               utterance=new SpeechSynthesisUtterance(toText.value);
+               utterance.lang=selectTag[1].value;
+               toText.blur();
+           }
+           speechSynthesis.speak(utterance);
+       }
     })
 })
