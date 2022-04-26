@@ -1,13 +1,14 @@
+import { countries } from "../src/countries.js";
+
 const selectTag=document.querySelectorAll("select");
 
-
-
-selectTag.forEach(tag=>{
+selectTag.forEach((tag,id)=>{
     
+  
     for(let country_code in countries){
-        console.log(countries[country_code])
+        
         let option=`<option value="${country_code}">${countries[country_code]}</option>`
-        tag.insertAdjacentHTML("beforebegin", option);
+        tag.insertAdjacentHTML("beforeend", option);
     }
     
 });

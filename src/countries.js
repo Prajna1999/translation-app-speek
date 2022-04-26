@@ -97,3 +97,4 @@ const countries = {
     "yi-YD": "Yiddish",
     "zu-ZA": "Zulu"
 }
+export {countries}
